@@ -2,38 +2,23 @@
 
 @section('content')
 
-    @if(Session::has('errors'))
-        {{ Session::get('errors')}}
-    @endif
+    <div id="list">
+        <form action="{{route('wishfiles.show')}}">
+            @if(!empty($files))
+                <select name="file" class="custom-select"/>
+                    @foreach($files as $file)
 
+                        <option value="{{ $file->id }}">
+                            {{ $file->name }}
+                        </option>
 
-    <form action="{{route('wishfiles.store')}}" method="POST" enctype="multipart/form-data"  >
+                    @endforeach
+                </select >
+            @endif
 
-        @csrf
-
-        <input type="file" name="file"  @change="majfilename"/>
-        <button type="submit" name="button">
-            Save file
-        </button>
-
-    </form>
-
-    <div  class="row">
-        <div class="col-12">
-            @{{filename}}
-        </div>
+            <button type="submit" name="button" class="btn btn-primary" >
+                Terminer
+            </button>
+        </form>
     </div>
-    @foreach($files as $file)
-
-        <div class="row">
-            <div class="col-6">
-                {{ $file->name }}
-            </div>
-            <div class="col-6">
-                {{ $fileCfg['path'] . '/' . $file->type . '/' . $file->pathname . '.' .$file->extension }}
-            </div>
-        </div>
-
-    @endforeach
-
 @endsection
