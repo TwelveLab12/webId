@@ -11,6 +11,5 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::resource('/', 'WishfilesController')->only(['index']);
+Route::resource('whishfiles', 'WishfilesController')->only(['store']);
