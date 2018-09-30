@@ -44,6 +44,7 @@ class WishfilesController extends Controller
     public function create()
     {
         //
+        return view('wishfiles.create');
     }
 
     /**
@@ -79,7 +80,7 @@ class WishfilesController extends Controller
             ]);
         }
 
-        return redirect(route('index'));
+        return redirect(route('wishfiles.list'));
 
     }
 
@@ -91,8 +92,22 @@ class WishfilesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
+
+        $id = $request->input('file');
+        $wishfile = Wishfile::find($id);
+
+        if(empty($wishfile)){
+            redirect()->back();
+        }
+
+        $file = [
+            'url' => $this->getFullBasePath(). '/' . $wishfile->type . '/' . $wishfile->pathname . '.' . $wishfile->extension
+        ];
+
+        return view('wishfiles.show', compact('file'));
+
         //
     }
 
