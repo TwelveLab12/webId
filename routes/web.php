@@ -11,5 +11,11 @@
 |
 */
 
-Route::resource('/', 'WishfilesController')->only(['index']);
-Route::resource('wishfiles', 'WishfilesController')->only(['store']);
+Route::get('/', 'WishfilesController@create')->name('wishfiles.create');
+Route::get('/list', 'WishfilesController@index')->name('wishfiles.list');
+Route::post('/', 'WishfilesController@store')->name('wishfiles.store');
+Route::get('/file', 'WishfilesController@show')->name('wishfiles.show');
+
+//
+// Route::resource('/', 'WishfilesController')->only(['create'])->;
+// Route::resource('wishfiles', 'WishfilesController')->only(['store']);
