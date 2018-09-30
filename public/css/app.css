@@ -13527,3 +13527,43 @@ a.text-dark:focus {
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
+body #app {
+  margin-top: 100px;
+  background-color: #F8F8F8;
+}
+
+body #app h1 {
+  margin-bottom: 40px;
+}
+
+body #app h4 {
+  margin-bottom: 20px;
+}
+
+body #app form {
+  padding: 50px 0px;
+  background: #F8F8F8;
+}
+
+body #app #filename {
+  padding: 5px 10px;
+}
+
+body #app #list .row {
+  padding: 5px 10px;
+  background: #EFEFEF;
+}
+
+body #app #list .row:nth-child(even) {
+  background: #F8F8F8;
+}
+
+body #app .links {
+  text-align: right;
+  padding: 15px 0px;
+}
+
+body .clippy {
+  width: 13px;
+}
+

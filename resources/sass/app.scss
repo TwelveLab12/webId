@@ -9,7 +9,62 @@
 @import 'font-awesome/font-awesome';
 @import 'bootstrap/bootstrap';
 
+$primary-color: #F8F8F8;
+$secondary-color: #FFFFFF;
+$third-color: #EFEFEF;
+
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+body{
+
+    #app{
+
+        margin-top: 100px;
+        background-color: $primary-color;
+
+        h1{
+                margin-bottom: 40px;
+        }
+        h4{
+                margin-bottom: 20px;
+        }
+
+        form{
+            padding: 50px 0px;
+            background: $primary-color;
+        }
+
+        #filename{
+            padding: 5px 10px;
+        }
+        #list{
+
+            .row{
+
+                padding: 5px 10px;
+                background: $third-color;
+
+                &:nth-child(even){
+                    background: $primary-color;
+                }
+            }
+        }
+
+        .links{
+            text-align: right;
+            padding: 15px 0px;
+            a{
+
+            }
+        }
+
+    }
+
+    .clippy {
+        width: 13px;
+    }
+
 }
