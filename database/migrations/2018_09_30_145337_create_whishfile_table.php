@@ -13,7 +13,7 @@ class CreateWhishfileTable extends Migration
      */
     public function up()
     {
-        Schema::create('whishfiles', function (Blueprint $table) {
+        Schema::create('wishfiles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('pathname')->unique();
             $table->string('name');
@@ -30,6 +30,6 @@ class CreateWhishfileTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('whishfiles');
+        Schema::dropIfExists('wishfiles');
     }
 }

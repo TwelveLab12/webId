@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Session;
-use App\Whishfile;
+use App\Wishfile;
 
 class WishfilesController extends Controller
 {
@@ -32,8 +32,8 @@ class WishfilesController extends Controller
             'dir' => $this->getDir(),
         ];
 
-        $files = Whishfile::all();
-        return view('whishfiles.index', compact('files', 'fileCfg'));
+        $files = Wishfile::all();
+        return view('wishfiles.index', compact('files', 'fileCfg'));
     }
 
     /**
@@ -55,7 +55,7 @@ class WishfilesController extends Controller
     public function store(Request $request)
     {
 
-        $model = new Whishfile();
+        $model = new Wishfile();
 
         $validator = $this->validate($request, [
             'file' => 'required|file',

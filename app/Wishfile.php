@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Whishfile extends Model
+class Wishfile extends Model
 {
     //
     protected $fillable = [

@@ -12,4 +12,4 @@
 */
 
 Route::resource('/', 'WishfilesController')->only(['index']);
-Route::resource('whishfiles', 'WishfilesController')->only(['store']);
+Route::resource('wishfiles', 'WishfilesController')->only(['store']);

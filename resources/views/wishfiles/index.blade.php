@@ -7,7 +7,7 @@
     @endif
 
 
-    <form action="{{route('whishfiles.store')}}" method="POST" enctype="multipart/form-data"  >
+    <form action="{{route('wishfiles.store')}}" method="POST" enctype="multipart/form-data"  >
 
         @csrf
 
