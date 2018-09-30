@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="{{ app()->getLocale() }}">
     <head>
+
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,9 +23,12 @@
     </head>
     <body>
 
+
         <div id="app" class="container">
 
             <div class="row justify-content-md-center">
+
+                <h1> Demandez des documents en toute simplicité </h1>
 
                 <div class="col-10">
                     <div class="content">
@@ -37,5 +41,6 @@
         </div>
 
         <script src="{{ asset('js/app.js')}}" /></script>
+        @stack('endscript')
     </body>
 </html>
