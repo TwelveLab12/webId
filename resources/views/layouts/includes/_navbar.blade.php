@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg bg-app">
 
   <a class="navbar-brand" href="{{ route('wishfiles.list') }}">
         @lang('app.navbar.home')
@@ -11,15 +11,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
 
-      <li class="nav-item @if( Route::current()->getName()  == 'wishfiles.create') active @endif">
-        <a class="nav-link" href="{{ route('wishfiles.create') }}">
-
-            @lang('app.navbar.wishfiles.create')
-            @if(Route::current()->getName()  == 'wishfiles.create')
-                <span class="sr-only">(current)</span>
-            @endif
-        </a>
-      </li>
+        @each('layouts.includes._navbar_items', config('navbar.items', []), 'route')
 
     </ul>
 
