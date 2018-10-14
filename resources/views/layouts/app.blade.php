@@ -12,7 +12,9 @@
             window.Laravel = { csrfToken: '{{ csrf_token() }}' }
         </script>
 
-        <title>Wishfiles List</title>
+        <title>
+            @lang('app.head.title')
+        </title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -23,12 +25,17 @@
     </head>
     <body>
 
+        <div id="navbar" class="row justify-content-md-center">
+            <div class="col-10">
+                @include('layouts.includes._navbar')
+            </div>
+        </div>
 
         <div id="app" class="container">
 
             <div class="row justify-content-md-center">
 
-                <h1> Demandez des documents en toute simplicité </h1>
+                <h1> @lang('app.main_title') </h1>
 
                 <div class="col-10">
                     <div class="content">
