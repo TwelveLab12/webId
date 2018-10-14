@@ -9,6 +9,10 @@
 @import 'font-awesome/font-awesome';
 @import 'bootstrap/bootstrap';
 
+// app
+@import 'includes/_navbar';
+@import 'includes/_helpers';
+
 $primary-color: #F8F8F8;
 $secondary-color: #FFFFFF;
 $third-color: #EFEFEF;
