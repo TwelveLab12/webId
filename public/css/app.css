@@ -13521,6 +13521,52 @@ a.text-dark:focus {
   }
 }
 
+#navbar {
+  background-color: #333;
+}
+
+#navbar .navbar.bg-app {
+  background-color: #333;
+}
+
+#navbar .navbar a {
+  text-transform: capitalize;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+#navbar .navbar .navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+#navbar .navbar .navbar-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+h1 {
+  text-transform: capitalize;
+}
+
+h2 {
+  text-transform: capitalize;
+}
+
+h3 {
+  text-transform: capitalize;
+}
+
+h4 {
+  text-transform: capitalize;
+}
+
+h5 {
+  text-transform: capitalize;
+}
+
+h6 {
+  text-transform: capitalize;
+}
+
 .navbar-laravel {
   background-color: #fff;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
