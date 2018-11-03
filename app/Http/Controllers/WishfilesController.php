@@ -6,17 +6,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Session;
 use App\Wishfile;
+use App\Services\FileManager;
 
 class WishfilesController extends Controller
 {
 
-    private $base = 'storage/';
-    private $dir = 'files';
+    private $model;
+    private $fileManger;
 
-    private $image_ext = ['jpg', 'jpeg', 'png', 'gif'];
-    private $audio_ext = ['mp3', 'ogg', 'mpga'];
-    private $video_ext = ['mp4', 'mpeg'];
-    private $document_ext = ['doc', 'docx', 'pdf', 'odt'];
+    public function __construct(){
+        $this->fileManager = app(FileManager::class);
+    }
 
     /**
      * Display a listing of the resource.
@@ -27,13 +27,8 @@ class WishfilesController extends Controller
     {
         //
 
-        $fileCfg =[
-            'path' => $this->getFullBasePath(),
-            'dir' => $this->getDir(),
-        ];
-
         $files = Wishfile::all();
-        return view('wishfiles.index', compact('files', 'fileCfg'));
+        return view('wishfiles.index', compact('files'));
     }
 
     /**
@@ -56,35 +51,22 @@ class WishfilesController extends Controller
     public function store(Request $request)
     {
 
-        $model = new Wishfile();
-
         $validator = $this->validate($request, [
             'file' => 'required|file',
         ]);
 
-        $file = $request->file('file');
+        $this->fileManager->setFile($request->file('file'));
 
-        $name =$file->getClientOriginalName();
-        $ext = $file->getClientOriginalExtension();
-        $type = $this->getType($ext);
+        if($this->fileManager->putFileAs()){
 
-        $pathName = uniqid();
+            $model = new Wishfile();
+            $model::create($this->fileManager->getDataToStore());
 
-        if (Storage::putFileAs('/public/' . $this->getDir() . '/' . $type . '/', $file, $pathName . '.' . $ext)) {
-
-             $model::create([
-                'pathname' => $pathName,
-                'name' => $name,
-                'type' => $type,
-                'extension' => $ext,
-            ]);
         }
 
         return redirect(route('wishfiles.list'));
 
     }
-
-
 
     /**
      * Display the specified resource.
@@ -103,7 +85,7 @@ class WishfilesController extends Controller
         }
 
         $file = [
-            'url' => $this->getFullBasePath(). '/' . $wishfile->type . '/' . $wishfile->pathname . '.' . $wishfile->extension
+            'url' => $this->fileManager->getFileUrl($wishfile->type . '/' . $wishfile->pathname . '.' . $wishfile->extension)
         ];
 
         return view('wishfiles.show', compact('file'));
@@ -147,37 +129,8 @@ class WishfilesController extends Controller
 
     /* private methods */
 
-    /**
-     * Get type by extension
-     * @param  string $ext Specific extension
-     * @return string      Type
-     */
-    private function getType($ext)
-    {
-        if (in_array($ext, $this->image_ext)) {
-            return 'image';
-        }
 
-        if (in_array($ext, $this->audio_ext)) {
-            return 'audio';
-        }
 
-        if (in_array($ext, $this->video_ext)) {
-            return 'video';
-        }
 
-        if (in_array($ext, $this->document_ext)) {
-            return 'document';
-        }
-    }
-
-    private function getDir()
-    {
-        return $this->dir;
-    }
-
-    private function getFullBasePath(){
-        return url($this->base.$this->getDir());
-    }
 
 }
