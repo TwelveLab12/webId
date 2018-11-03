@@ -3,12 +3,15 @@
 @section('content')
 
     <h4>
-        Votre lien personnalisé a été généré. Vous n'avez plus qu'à le transmettre à votre correspondant.
+        @lang('show.subtitle')
+        {--
+            Votre lien personnalisé a été généré. Vous n'avez plus qu'à le transmettre à votre correspondant.
+        --}
     </h4>
-    
+
     <div class="input-group">
 
-        <input id="file" class="form-control" value="{{ $file['url'] }}">
+        <input id="file" class="form-control" value="{{ url($file['url']) }}">
         <!-- Trigger -->
         <div class="input-group-append">
 
